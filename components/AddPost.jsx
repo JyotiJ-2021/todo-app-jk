@@ -19,7 +19,7 @@ const AddPost = () => {
     setInputs({})
 
     axios
-      .post("/api/posts", inputs)
+      .post("/api/todo", inputs)
       .then((res) => {
         console.log("hello")
       })
