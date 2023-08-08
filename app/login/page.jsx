@@ -1,12 +1,24 @@
 "use client"
 import React, { useState } from "react"
-
+import axios from "axios"
 const Login = () => {
   const [inputs, setInputs] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(inputs)
+
+    axios
+      .post("/api/login", inputs)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        setInputs({})
+      })
   }
 
   const handleChange = (e) => {

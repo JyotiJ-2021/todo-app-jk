@@ -7,6 +7,7 @@ export const POST = async (request) => {
     const { name, email, password, gender, country, state, contactNumber } =
       body
 
+    const contact = JSON.parse(contactNumber)
     const users = await prisma.users.create({
       data: {
         name,
@@ -15,7 +16,7 @@ export const POST = async (request) => {
         gender,
         country,
         state,
-        contactNumber,
+        contactNumber: contact,
       },
     })
     await prisma.$disconnect()

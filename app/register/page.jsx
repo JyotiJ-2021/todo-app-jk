@@ -1,19 +1,49 @@
 "use client"
+import { countries } from "@/utils/country"
 import React, { useState } from "react"
+import axios from "axios"
 
 const Register = () => {
   const [inputs, setInputs] = useState({})
-
+  const [state, setState] = useState([])
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(inputs)
+
+    axios
+      .post("/api/register", inputs)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        setInputs({})
+        setState([])
+      })
   }
 
   const handleChange = (e) => {
     const name = e.target.name
     const value = e.target.value
+
     setInputs((prevState) => ({ ...prevState, [name]: value }))
   }
+
+  const handleCountry = (e) => {
+    const getcountryId = e.target.value
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+    const getState = countries.find(
+      (country) => country.country === getcountryId
+    ).states
+    setState(getState)
+  }
+
+  console.log(inputs)
+
   return (
     <div className="max-w-lg mx-auto text-gray-800">
       <form className="mb-4" onSubmit={handleSubmit}>
@@ -86,13 +116,15 @@ const Register = () => {
             name="country"
             placeholder="Select Country"
             required
-            value={inputs.country || ""}
-            onChange={handleChange}
+            onChange={(e) => handleCountry(e)}
           >
-            <option disabled selected>
-              Select your country
-            </option>
-            <option value={"hello"}>hello</option>
+            {countries.map((item, i) => {
+              return (
+                <option key={i} value={item.country}>
+                  {item.country}
+                </option>
+              )
+            })}
           </select>
         </div>
         <div className="mb-4">
@@ -102,16 +134,22 @@ const Register = () => {
           >
             State
           </label>
-          <input
-            className="w-full px-3 py-2 border rounded text-sm"
-            type="text"
+          <select
+            className="w-full px-3 py-2 border rounded"
             id="state"
             name="state"
-            placeholder="Enter State"
+            placeholder="Select State"
             required
-            value={inputs.state || ""}
-            onChange={handleChange}
-          />
+            onChange={(e) => handleChange(e)}
+          >
+            {state.map((item, i) => {
+              return (
+                <option key={i} value={item}>
+                  {item}
+                </option>
+              )
+            })}
+          </select>
         </div>
         <div className="mb-4">
           <label
@@ -125,6 +163,7 @@ const Register = () => {
             <label
               className="block text-gray-300 text-left text-sm"
               htmlFor="male"
+              onChange={handleChange}
             >
               Male
             </label>
@@ -135,6 +174,7 @@ const Register = () => {
               id="female"
               name="gender"
               value="female"
+              onChange={handleChange}
               required
             />
             <label
@@ -151,6 +191,7 @@ const Register = () => {
               name="gender"
               value="other"
               required
+              onChange={handleChange}
             />
             <label
               className="block text-gray-300 text-left text-sm"
@@ -169,12 +210,12 @@ const Register = () => {
           </label>
           <input
             className="w-full px-3 py-2 border rounded text-sm"
-            type="tel"
+            type="number"
             id="contactNumber"
             name="contactNumber"
             placeholder="Enter Contact Number"
             required
-            value={inputs.contactNumber || ""}
+            value={inputs.contactNumber || null}
             onChange={handleChange}
           />
         </div>

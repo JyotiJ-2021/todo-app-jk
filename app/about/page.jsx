@@ -18,38 +18,39 @@ const About = () => {
           exciting journey, check out our careers page for current job openings.
           Contact Us If you have any questions or inquiries, don't hesitate to
           get in touch with us. You can reach us through our contact page or
-          simply give us a call at +91 4567898989. We look forward to hearing
+          simply give us a call at +91 9931141310. We look forward to hearing
           from you!
         </p>
         <h4 className="text-2xl pb-8 pt-12"> What Sets Us Apart</h4>
-        <p>
+        <p className="text-left">
           At Our Company, we take pride in our unwavering commitment to quality,
           reliability, and customer satisfaction. Here are some key factors that
           set us apart from the rest:
         </p>
-        <ul>
-          <li>
+        <ul className="text-left">
+          <li className="mt-2 mb-2">
             <b> Experienced Team:</b> Our team comprises skilled professionals
             with years of experience in the [industry/service] domain. Their
             expertise allows us to deliver outstanding results.
           </li>
+          <li className="mt-2 mb-2">
+            <b> Innovation:</b> We believe in staying ahead of the curve by
+            embracing the latest technologies and industry trends. Our
+            innovative approach enables us to offer cutting-edge solutions to
+            our clients.
+          </li>
+          <li className="mt-2 mb-2">
+            <b>Customer-Centric Approach:</b> Our customers are at the heart of
+            everything we do. We listen to their needs, understand their
+            challenges, and tailor our solutions to meet their unique
+            requirements.
+          </li>
+          <li className="mt-2 mb-2">
+            <b>Sustainability:</b> We are deeply committed to sustainability and
+            environmental responsibility. We integrate eco-friendly practices
+            into our operations to minimize our ecological footprint.
+          </li>
         </ul>
-        <li>
-          <b> Innovation:</b> We believe in staying ahead of the curve by
-          embracing the latest technologies and industry trends. Our innovative
-          approach enables us to offer cutting-edge solutions to our clients.
-        </li>
-        <li>
-          <b>Customer-Centric Approach:</b> Our customers are at the heart of
-          everything we do. We listen to their needs, understand their
-          challenges, and tailor our solutions to meet their unique
-          requirements.
-        </li>
-        <li>
-          <b>Sustainability:</b> We are deeply committed to sustainability and
-          environmental responsibility. We integrate eco-friendly practices into
-          our operations to minimize our ecological footprint.
-        </li>
       </div>
     </div>
   )

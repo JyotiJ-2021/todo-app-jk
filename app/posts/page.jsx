@@ -7,16 +7,12 @@ async function getPostsData() {
 
 const Posts = async () => {
   const posts = await getPostsData()
-  //pending task
+
   //search by brand category title price
   //detail page
   //cart
   //wishlist
-  //payment
-  //register
-  //login
   //redux
-  //api
 
   return (
     <>
