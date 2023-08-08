@@ -215,7 +215,7 @@ const Register = () => {
             name="contactNumber"
             placeholder="Enter Contact Number"
             required
-            value={inputs.contactNumber || null}
+            value={inputs.contactNumber || ""}
             onChange={handleChange}
           />
         </div>

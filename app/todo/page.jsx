@@ -3,9 +3,12 @@ import PostList from "@/components/PostList"
 import React from "react"
 
 async function getData() {
-  const res = await fetch("/api/todo", {
-    cache: "no-store",
-  })
+  const res = await fetch(
+    "https://vercel.com/jyotij-2021/todo-app-jk/api/todo",
+    {
+      cache: "no-store",
+    }
+  )
 
   if (!res.ok) {
     throw new Error("Failed to fetch data")
