@@ -3,7 +3,7 @@ import PostList from "@/components/PostList"
 import React from "react"
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/posts", {
+  const res = await fetch("http://localhost:3000/api/todo", {
     cache: "no-store",
   })
 
@@ -19,7 +19,7 @@ const CURD = async () => {
 
   return (
     <div>
-      <h4>Todo List App</h4>
+      <h4 className="text-2xl mb-4">Todo List</h4>
       <AddPost />
       <PostList posts={posts} />
     </div>

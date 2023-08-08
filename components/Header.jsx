@@ -30,7 +30,10 @@ const Header = () => {
           )
         })}
       </ul>
-      <div className="text-xs">Login | Register</div>
+      <div className="text-xs">
+        <Link href="/login"> Login</Link> |{" "}
+        <Link href="/register"> Register</Link>
+      </div>
     </div>
   )
 }

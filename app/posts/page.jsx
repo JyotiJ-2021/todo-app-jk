@@ -7,6 +7,7 @@ async function getPostsData() {
 
 const Posts = async () => {
   const posts = await getPostsData()
+  //pending task
   //search by brand category title price
   //detail page
   //cart
@@ -16,6 +17,7 @@ const Posts = async () => {
   //login
   //redux
   //api
+
   return (
     <>
       <h4 className="text-2xl text-left">Posts</h4>

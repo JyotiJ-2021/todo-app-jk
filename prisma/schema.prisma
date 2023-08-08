@@ -10,10 +10,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post{
+model Todo{
   id String @id @default(auto()) @map("_id") @db.ObjectId 
   title String?
   description String?
+  like Int 
+  dislike Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact{
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  name String?
+  email String? 
+  message String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Users{
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  name String?
+  email String? @unique
+  password String?
+  gender String?
+  state String?
+  country String?
+  contactNumber Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -21,3 +45,4 @@ model Post{
 //npx prisma generator
 //npx prisma db push
 //npx prisma init
+//npx prisma 

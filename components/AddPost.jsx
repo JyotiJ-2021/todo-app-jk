@@ -33,10 +33,10 @@ const AddPost = () => {
       })
   }
   return (
-    <div>
+    <div className="text-right mb-4 mt-2">
       <button
         onClick={() => setModalOpen(true)}
-        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        className="bg-sky-800 hover:bg-sky-600 text-white  py-2 px-4 rounded"
       >
         Add new post
       </button>
@@ -50,8 +50,22 @@ const AddPost = () => {
             onClick={() => setModalOpen(false)}
             className=" text-2xl text-gray-800 relative"
           >
-            <h1 className="text-2xl  mb-4">Add new post</h1>
-            <span className="absolute right-4 top-0"> &times;</span>
+            <h1 className="text-2xl text-center mb-4">Add new post</h1>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              onClick={() => setModalOpen(false)}
+              className="w-6 h-6 absolute right-0 top-0 cursor-pointer"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </div>
           <form onSubmit={handleSubmit}>
             <input
@@ -60,7 +74,7 @@ const AddPost = () => {
               name="title"
               value={inputs.title || ""}
               onChange={handleChange}
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
+              className="w-full mb-4 p-2 border text-gray-800 border-gray-300 rounded"
             />
             <input
               type="text"
@@ -68,7 +82,7 @@ const AddPost = () => {
               name="description"
               value={inputs.description || ""}
               onChange={handleChange}
-              className="w-full mb-4 p-2 border border-gray-300 rounded"
+              className="w-full mb-4 p-2 border text-gray-800 border-gray-300 rounded"
             />
             <button
               type="submit"

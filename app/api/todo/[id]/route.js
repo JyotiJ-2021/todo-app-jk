@@ -7,7 +7,7 @@ export const PATCH = async (request, { params }) => {
     const { title, description } = body
 
     const { id } = params
-    const updatePost = await prisma.post.update({
+    const updatePost = await prisma.todo.update({
       where: {
         id,
       },
@@ -33,7 +33,7 @@ export const PATCH = async (request, { params }) => {
 export const GET = async (request, { params }) => {
   try {
     const { id } = params
-    const newPsot = await prisma.post.findUnique({
+    const newPsot = await prisma.todo.findUnique({
       where: {
         id,
       },
@@ -55,7 +55,7 @@ export const GET = async (request, { params }) => {
 export const DELETE = async (request, { params }) => {
   try {
     const { id } = params
-    const newPsot = await prisma.post.delete({
+    const newPsot = await prisma.todo.delete({
       where: {
         id,
       },

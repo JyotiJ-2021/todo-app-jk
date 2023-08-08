@@ -4,12 +4,14 @@ import { NextResponse } from "next/server"
 export const POST = async (request) => {
   try {
     const body = await request.json()
-    const { title, description } = body
+    const { title, description, like, dislike } = body
 
-    const newPsot = await prisma.post.create({
+    const newPsot = await prisma.todo.create({
       data: {
         title,
         description,
+        like,
+        dislike,
       },
     })
 
@@ -21,7 +23,7 @@ export const POST = async (request) => {
 
 export const GET = async () => {
   try {
-    const newPsot = await prisma.post.findMany()
+    const newPsot = await prisma.todo.findMany()
 
     return NextResponse.json(newPsot)
   } catch (err) {
