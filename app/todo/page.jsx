@@ -3,7 +3,7 @@ import PostList from "@/components/PostList"
 import React from "react"
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/todo", {
+  const res = await fetch("/api/todo", {
     cache: "no-store",
   })
 
