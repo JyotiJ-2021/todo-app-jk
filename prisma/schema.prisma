@@ -43,6 +43,6 @@ model Users{
 }
 
 //npx prisma generator
-//npx prisma db push
+//npx prisma db push  //to push your collection in mongodb
 //npx prisma init
 //npx prisma 

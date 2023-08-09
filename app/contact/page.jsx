@@ -8,12 +8,12 @@ const ContactPage = () => {
   const handleChange = (e) => {
     const name = e.target.name
     const value = e.target.value
-    console.log("reacge i nchagefey")
+
     setInputs((prevState) => ({ ...prevState, [name]: value }))
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("reaced heree")
+
     setInputs({})
 
     axios

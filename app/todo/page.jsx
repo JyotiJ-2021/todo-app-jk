@@ -7,14 +7,14 @@ import PostList from "@/components/PostList"
 const CURD = () => {
   const [posts, setPosts] = useState()
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get("/api/todo")
+  async function fetchData() {
+    const response = await axios.get(
+      "https://vercel.com/jyotij-2021/todo-app-jk/api/todo"
+    )
 
-      setPosts(response.data)
-    }
-    fetchData()
-  }, [])
+    setPosts(response.data)
+  }
+  fetchData()
 
   return (
     <div>

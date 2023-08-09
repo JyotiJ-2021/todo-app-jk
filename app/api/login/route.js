@@ -14,7 +14,7 @@ export const POST = async (request) => {
     })
 
     if (users) {
-      return NextResponse.json(users)
+      return NextResponse.json({ message: "User found" }, { status: 200 })
     } else {
       return NextResponse.json({ message: "User not found" }, { status: 200 })
     }

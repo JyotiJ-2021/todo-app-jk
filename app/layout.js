@@ -3,7 +3,8 @@ import "tailwindcss/tailwind.css"
 import { Poppins } from "next/font/google"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
-
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] })
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <Header />
         <div className="text-center  p-32 min-h-min"> {children}</div>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   )

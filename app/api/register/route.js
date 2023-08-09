@@ -7,28 +7,32 @@ export const POST = async (request) => {
     const { name, email, password, gender, country, state, contactNumber } =
       body
 
-    const contact = JSON.parse(contactNumber)
-    const users = await prisma.users.create({
-      data: {
-        name,
+    const usersExists = await prisma.users.findUnique({
+      where: {
         email,
-        password,
-        gender,
-        country,
-        state,
-        contactNumber: contact,
       },
     })
-    await prisma.$disconnect()
 
-    if (users) {
+    if (usersExists) {
       return NextResponse.json(
-        { message: " register successful " },
+        { message: "User already exists" },
         { status: 200 }
       )
     } else {
+      const contact = JSON.parse(contactNumber)
+      await prisma.users.create({
+        data: {
+          name,
+          email,
+          password,
+          gender,
+          country,
+          state,
+          contactNumber: contact,
+        },
+      })
       return NextResponse.json(
-        { message: " register not successful " },
+        { message: "Register successful" },
         { status: 200 }
       )
     }
