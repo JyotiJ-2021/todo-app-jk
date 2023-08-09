@@ -8,9 +8,7 @@ const CURD = () => {
   const [posts, setPosts] = useState()
 
   async function fetchData() {
-    const response = await axios.get(
-      "https://vercel.com/jyotij-2021/todo-app-jk/api/todo"
-    )
+    const response = await axios.get("https://todo-app-jk.vercel.app/api/todo")
 
     setPosts(response.data)
   }
