@@ -1,11 +1,11 @@
-## Todo App
+## [Todo App](https://todo-app-6eohfdiuu-jyotij-2021.vercel.app/)
 
 ## Technologies Used
 
-. [Tailwind](https://tailwindcss.com/docs/guides/nextjs)
-. [Prisma](https://www.prisma.io/nextjs)
-. [MongoDB](https://www.mongodb.com/docs/)
-. [Next.js](https://nextjs.org/docs)
+1. [Tailwind](https://tailwindcss.com/docs/guides/nextjs)
+2. [Prisma](https://www.prisma.io/nextjs)
+3. [MongoDB](https://www.mongodb.com/docs/)
+4. [Next.js](https://nextjs.org/docs)
 
 ## Description
 
@@ -13,12 +13,13 @@ This project was created for learning purposes, aiming to provide practical expe
 
 ## Getting Started
 
-1. Clone the repository: `git clone `
-2. Navigate to the project directory: `cd project-directory`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm run dev`
+1. Clone the repository: `git clone https://github.com/JyotiJ-2021/todo-app-jk.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
 
-# your feedback and contributions are welcome!
+## Prisma
+
+### your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
