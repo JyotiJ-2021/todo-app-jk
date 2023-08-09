@@ -7,8 +7,7 @@ import Header from "@/components/Header"
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] })
 
 export const metadata = {
-  title: "demo",
-  description: "demo",
+  title: "Todo App",
 }
 
 export default function RootLayout({ children }) {
