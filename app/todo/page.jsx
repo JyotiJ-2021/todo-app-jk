@@ -1,18 +1,18 @@
-"use client"
-import React, { useEffect, useState } from "react"
-import axios from "axios"
-import AddPost from "@/components/AddPost"
-import PostList from "@/components/PostList"
+"use client";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import AddPost from "@/components/AddPost";
+import PostList from "@/components/PostList";
 
 const CURD = () => {
-  const [posts, setPosts] = useState()
+  const [posts, setPosts] = useState();
 
   async function fetchData() {
-    const response = await axios.get("https://todo-app-jk.vercel.app/api/todo")
+    const response = await axios.get("https://todo-app-jk.vercel.app/api/todo");
 
-    setPosts(response.data)
+    setPosts(response.data);
   }
-  fetchData()
+  fetchData();
 
   return (
     <div>
@@ -20,7 +20,7 @@ const CURD = () => {
       <AddPost />
       {posts && <PostList posts={posts} />}
     </div>
-  )
-}
+  );
+};
 
-export default CURD
+export default CURD;

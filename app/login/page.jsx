@@ -1,40 +1,40 @@
-"use client"
-import React, { useState } from "react"
-import axios from "axios"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Login = () => {
-  const [inputs, setInputs] = useState({})
-  const [showMessage, setMessage] = useState()
+  const [inputs, setInputs] = useState({});
+  const [showMessage, setMessage] = useState();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     axios
       .post("/api/login", inputs)
       .then((res) => {
         if (res.data.message === "User found") {
-          router.push("/")
-          setInputs({})
+          router.push("/");
+          setInputs({});
         } else {
-          setMessage("You are not logged in yet, please try to register first")
+          setMessage("You are not logged in yet, please try to register first");
         }
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   const handleChange = (e) => {
-    setMessage()
+    setMessage();
 
-    const name = e.target.name
-    const value = e.target.value
-    setInputs((prevState) => ({ ...prevState, [name]: value }))
-  }
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   return (
     <div className="max-w-lg mx-auto">
@@ -42,7 +42,7 @@ const Login = () => {
         <h2 className="text-2xl font-semibold mb-4">Login</h2>
         <div className="mb-4 ">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="email"
           >
             Email
@@ -60,7 +60,7 @@ const Login = () => {
         </div>
         <div className="mb-4">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="password"
           >
             Password
@@ -100,7 +100,7 @@ const Login = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

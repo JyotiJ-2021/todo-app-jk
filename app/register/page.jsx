@@ -1,86 +1,86 @@
-"use client"
-import { countries } from "@/utils/country"
-import React, { useState } from "react"
-import axios from "axios"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
+"use client";
+import { countries } from "@/utils/country";
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Register = () => {
-  const router = useRouter()
-  const [showMessage, setMessage] = useState()
-  const [inputs, setInputs] = useState({})
-  const [state, setState] = useState([])
-  const [confirmPassword, setConfirmPassword] = useState()
-  const [checkPassword, setCheckPassword] = useState()
+  const router = useRouter();
+  const [showMessage, setMessage] = useState();
+  const [inputs, setInputs] = useState({});
+  const [state, setState] = useState([]);
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [checkPassword, setCheckPassword] = useState();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     axios
       .post("/api/register", inputs)
       .then((res) => {
         if (res.data.message === "Register successful") {
-          router.push("/login")
-          setInputs({})
-          setState([])
+          router.push("/login");
+          setInputs({});
+          setState([]);
         } else {
           setMessage(
             "An account with this username/email already exists. Please log in or use a different email to register."
-          )
+          );
         }
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
   const handleChange = (e) => {
-    setCheckPassword()
+    setCheckPassword();
 
-    const name = e.target.name
-    const value = e.target.value
+    const name = e.target.name;
+    const value = e.target.value;
 
-    setInputs((prevState) => ({ ...prevState, [name]: value }))
-  }
+    setInputs((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleCountry = (e) => {
-    const getcountryId = e.target.value
+    const getcountryId = e.target.value;
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }))
+    }));
     const getState = countries.find(
       (country) => country.country === getcountryId
-    ).states
-    setState(getState)
-  }
+    ).states;
+    setState(getState);
+  };
 
   const matchPassword = (e) => {
-    setConfirmPassword(e.target.value)
+    setConfirmPassword(e.target.value);
 
     if (inputs.password === e.target.value) {
-      setCheckPassword("Password match")
+      setCheckPassword("Password match");
       setTimeout(() => {
-        setCheckPassword()
-      }, 1000)
+        setCheckPassword();
+      }, 1000);
     } else {
-      setCheckPassword("Password not match")
+      setCheckPassword("Password not match");
     }
-  }
+  };
 
   function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 
   function isValidPassword(password) {
-    const minLength = 8
-    const hasUppercase = /[A-Z]/.test(password)
-    const hasLowercase = /[a-z]/.test(password)
-    const hasNumber = /[0-9]/.test(password)
+    const minLength = 8;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
     const hasSpecialCharacter = /[!@#$%^&*()_+{}\[\]:;<>,.?~\-\/\\]/.test(
       password
-    )
+    );
 
     return (
       password.length >= minLength &&
@@ -88,16 +88,16 @@ const Register = () => {
       hasLowercase &&
       hasNumber &&
       hasSpecialCharacter
-    )
+    );
   }
 
   return (
     <div className="max-w-lg mx-auto text-gray-800">
       <form className="mb-4" onSubmit={handleSubmit}>
-        <h2 className="text-2xl text-white font-semibold mb-4">Sign Up</h2>
+        <h2 className="text-2xl text-gray-800 font-semibold mb-4">Sign Up</h2>
         <div className="mb-4">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="name"
           >
             Name
@@ -116,7 +116,7 @@ const Register = () => {
         </div>
         <div className="mb-4 relative">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="email"
           >
             Email
@@ -139,7 +139,7 @@ const Register = () => {
         </div>
         <div className="mb-4 relative">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="password"
           >
             Password
@@ -163,7 +163,7 @@ const Register = () => {
 
         <div className="mb-4 relative">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="confpassword"
           >
             Confirm Password
@@ -186,7 +186,7 @@ const Register = () => {
         </div>
         <div className="mb-4">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="country"
           >
             Country
@@ -199,7 +199,7 @@ const Register = () => {
             required
             onChange={(e) => handleCountry(e)}
           >
-            <option selected className="block text-gray-300 text-xs ">
+            <option selected className="block text-gray-800 text-xs ">
               Select Country
             </option>
             {countries.map((item, i) => {
@@ -207,13 +207,13 @@ const Register = () => {
                 <option key={i} value={item.country}>
                   {item.country}
                 </option>
-              )
+              );
             })}
           </select>
         </div>
         <div className="mb-4">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="state"
           >
             State
@@ -231,13 +231,13 @@ const Register = () => {
                 <option key={i} value={item}>
                   {item}
                 </option>
-              )
+              );
             })}
           </select>
         </div>
         <div className="mb-4">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="gender"
           >
             Gender
@@ -245,7 +245,7 @@ const Register = () => {
           <div className="flex items-center">
             <input type="radio" id="male" name="gender" value="male" required />
             <label
-              className="block text-gray-300 text-left text-sm"
+              className="block text-gray-800 text-left text-sm"
               htmlFor="male"
               onChange={handleChange}
             >
@@ -262,7 +262,7 @@ const Register = () => {
               required
             />
             <label
-              className="block text-gray-300 text-left text-sm"
+              className="block text-gray-800 text-left text-sm"
               htmlFor="female"
             >
               Female
@@ -278,7 +278,7 @@ const Register = () => {
               onChange={handleChange}
             />
             <label
-              className="block text-gray-300 text-left text-sm"
+              className="block text-gray-800 text-left text-sm"
               htmlFor="other"
             >
               Other
@@ -287,7 +287,7 @@ const Register = () => {
         </div>
         <div className="mb-4">
           <label
-            className="block text-gray-300 text-left text-sm  mb-2"
+            className="block text-gray-800 text-left text-sm  mb-2"
             htmlFor="contactNumber"
           >
             Contact Number
@@ -307,10 +307,10 @@ const Register = () => {
           className="w-full bg-sky-800 text-white font-semibold py-2 rounded hover:bg-sky-600"
           type="submit"
         >
-          Sign Up
+          Register
         </button>
 
-        <div className="text-center text-white text-sm mt-4">
+        <div className="text-center text-gray-800 text-sm mt-4">
           <Link href="/login" variant="body2">
             Already have an account ? Login
           </Link>
@@ -325,7 +325,7 @@ const Register = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

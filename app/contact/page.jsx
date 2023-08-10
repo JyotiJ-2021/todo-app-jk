@@ -1,33 +1,33 @@
-"use client"
-import React, { useState } from "react"
-import axios from "axios"
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
 
 const ContactPage = () => {
-  const [inputs, setInputs] = useState({})
-  const [show, setShow] = useState(false)
+  const [inputs, setInputs] = useState({});
+  const [show, setShow] = useState(false);
   const handleChange = (e) => {
-    const name = e.target.name
-    const value = e.target.value
+    const name = e.target.name;
+    const value = e.target.value;
 
-    setInputs((prevState) => ({ ...prevState, [name]: value }))
-  }
+    setInputs((prevState) => ({ ...prevState, [name]: value }));
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    setInputs({})
+    setInputs({});
 
     axios
       .post("/api/contact", inputs)
       .then((res) => {
-        setShow(true)
+        setShow(true);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       })
       .finally(() => {
-        setInputs({})
-      })
-  }
+        setInputs({});
+      });
+  };
 
   return (
     <div>
@@ -42,7 +42,7 @@ const ContactPage = () => {
           <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-gray-300 text-left text-sm  mb-2"
+              className="block text-gray-800 text-left text-sm  mb-2"
             >
               Name:
             </label>
@@ -59,7 +59,7 @@ const ContactPage = () => {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-gray-300 text-left text-sm  mb-2"
+              className="block text-gray-800 text-left text-sm  mb-2"
             >
               Email:
             </label>
@@ -75,7 +75,7 @@ const ContactPage = () => {
           <div className="mb-4">
             <label
               htmlFor="message"
-              className="block text-gray-300 text-left text-sm  mb-2"
+              className="block text-gray-800 text-left text-sm  mb-2"
             >
               Message:
             </label>
@@ -97,7 +97,7 @@ const ContactPage = () => {
         </form>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ContactPage
+export default ContactPage;
